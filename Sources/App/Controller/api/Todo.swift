@@ -12,7 +12,7 @@ struct Todo {
 	var task:String
 	var duedate:String
 	var priority:String
-	var done:String
+	var done:Bool
 	var user_id:String
 }
 

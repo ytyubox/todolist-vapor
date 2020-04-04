@@ -12,6 +12,8 @@ class WebController:RouteCollection {
 		router.get(use: indexHandler(_:))
 	}
 	func indexHandler(_ req: Request) throws -> Future<View> {
-		try req.view().render("index")
+		let todo = Todo(task: "buy something", duedate: "Monday", priority: "10", done: false, user_id: "1")
+		let context = IndexContext(title: "home Page",todoList: [todo])
+		return try req.view().render("index", context)
 	}
 }
