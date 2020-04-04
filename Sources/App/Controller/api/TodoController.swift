@@ -9,7 +9,8 @@ import Vapor
 
 class TodoController:RouteCollection {
 	func boot(router: Router) throws {
-		router.get("todo") { (req) in
+		let api = router.grouped("api")
+		api.get("todo") { (req) in
 			return "123"
 		}
 	}
