@@ -6,7 +6,10 @@
 //
 
 import Foundation
+import FluentPostgreSQL
 import Vapor
+
+typealias DB = Migration & PostgreSQLModel & Content
 
 struct Todo {
 	var task:String
@@ -14,6 +17,9 @@ struct Todo {
 	var priority:String
 	var done:Bool
 	var user_id:String
+	var id: Int?
 }
 
-extension Todo:Codable {}
+extension Todo:Codable,Content {}
+extension Todo: PostgreSQLModel{}
+extension Todo:Migration {}

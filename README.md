@@ -16,3 +16,12 @@ If you have already installed the Vapor toolbox, you can create a new Vapor proj
 
 ## how to run by Xcode 11.4 with SPM
 ![](https://user-images.githubusercontent.com/1342803/59302875-f82ea180-8c62-11e9-983b-3c00888789a0.png)
+
+
+## docker with PostgresSQL
+
+```
+docker run --name postgres -e POSTGRES_DB=todoList \
+  -e POSTGRES_USER=todoList -e POSTGRES_PASSWORD=password \
+  -p 5432:5432 -d postgres
+```

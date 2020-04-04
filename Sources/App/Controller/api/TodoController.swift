@@ -10,10 +10,10 @@ import Vapor
 class TodoController:RouteCollection {
 	func boot(router: Router) throws {
 		let api = router.grouped("api")
-		api.get("todo") { (req) in
-			return "123"
-		}
+		api.get("todo",use: getAllTodo(_:))
 	}
 	
-	
+	func getAllTodo(_ req: Request) throws -> Future<[Todo]> {
+		Todo.query(on: req).all()
+	}
 }

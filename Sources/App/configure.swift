@@ -1,6 +1,6 @@
 import Vapor
 import Leaf
-import PostgreSQL
+import FluentPostgreSQL
 
 /// Called before your application initializes.
 ///
@@ -14,10 +14,25 @@ public func configure(
 	let router = EngineRouter.default()
 	try routes(router)
 	services.register(router, as: Router.self)
-	try services.register(PostgreSQLProvider())
-	try services.register(LeafProvider())
 	
-	// Configure the rest of your application here
-
+	// MARK: -  Leaf config
+	try services.register(LeafProvider())
 	config.prefer(LeafRenderer.self, for: ViewRenderer.self)
+	// MARK: - DB config
+	try handleDB(&services)
 }
+
+fileprivate
+func handleDB(
+	_ services: inout Services
+) throws {
+	try services.register(FluentPostgreSQLProvider())
+	var middlewares = MiddlewareConfig()
+	middlewares.use(ErrorMiddleware.self)
+	services.register(middlewares)
+	
+	DBMaker().make(services: &services)
+	
+	
+}
+
