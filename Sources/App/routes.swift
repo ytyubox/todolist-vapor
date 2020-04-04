@@ -7,6 +7,8 @@ import Vapor
 public func routes(_ router: Router) throws {
 	let todoController = TodoController()
 	try router.register(collection: todoController)
+	let webController = WebController()
+	try router.register(collection: webController)
 	router.get("hello") { req in
 		return "Hello, world!"
 	}
