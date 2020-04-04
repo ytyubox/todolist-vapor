@@ -5,7 +5,9 @@ import Vapor
 ///
 /// [Learn More →](https://docs.vapor.codes/3.0/getting-started/structure/#routesswift)
 public func routes(_ router: Router) throws {
-    router.get("hello") { req in
-        return "Hello, world!"
-    }
+	let todoController = TodoController()
+	try router.register(collection: todoController)
+	router.get("hello") { req in
+		return "Hello, world!"
+	}
 }
