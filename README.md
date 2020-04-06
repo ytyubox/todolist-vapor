@@ -21,7 +21,7 @@ If you have already installed the Vapor toolbox, you can create a new Vapor proj
 ## docker with PostgresSQL
 
 ```
-docker run --name postgres -e POSTGRES_DB=todoList \
+docker run --name todolist -e POSTGRES_DB=todoList \
   -e POSTGRES_USER=todoList -e POSTGRES_PASSWORD=password \
   -p 5432:5432 -d postgres
 ```

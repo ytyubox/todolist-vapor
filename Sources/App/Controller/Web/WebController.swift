@@ -6,13 +6,14 @@
 //
 
 import Vapor
+import Foundation
 import Leaf
 class WebController:RouteCollection {
 	func boot(router: Router) throws {
 		router.get(use: indexHandler(_:))
 	}
 	func indexHandler(_ req: Request) throws -> Future<View> {
-		let todo = Todo(task: "buy something", duedate: "Monday", priority: "10", done: false, user_id: "1")
+		let todo = Todo(task: "buy something", duedate: "Monday", priority: "10", done: false, user_id: "1", userID: UUID())
 		let context = IndexContext(title: "home Page",todoList: [todo])
 		return try req.view().render("index", context)
 	}
