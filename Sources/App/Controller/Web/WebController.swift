@@ -16,4 +16,10 @@ class WebController:RouteCollection {
 		let context = IndexContext(title: "home Page",todoList: [todo])
 		return try req.view().render("index", context)
 	}
+//	private func todoHandler(_ req: Request) throws -> Future<View> {
+//		return try req.parameters.next(Todo.self)
+//			.flatMap(to: View.self) { todo in
+//				todo
+//		}
+//	}
 }

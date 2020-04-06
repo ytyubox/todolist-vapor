@@ -24,6 +24,8 @@ struct DBMaker {
 		var migrations = MigrationConfig()
 		// 4
 		migrations.add(model: Todo.self, database: DatabaseIdentifier<Todo.Database>.psql)
+		migrations.add(model: User.self, database: DatabaseIdentifier<User.Database>.psql)
 		services.register(migrations)
 	}
 }
+

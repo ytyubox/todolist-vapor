@@ -23,3 +23,4 @@ struct Todo {
 extension Todo:Codable,Content {}
 extension Todo: PostgreSQLModel{}
 extension Todo:Migration {}
+extension Todo: Parameter{}
